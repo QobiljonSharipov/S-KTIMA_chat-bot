@@ -22,7 +22,7 @@ def start(message):
         time.sleep(2)
         bot.send_message(ADMIN_ID, "👋")
         bot.send_message(ADMIN_ID, "Assalomu Alaykum Admin hizmatga tayyorman.")
-    elif ulanganmi == "member" or ulanganmi == "creator" or ulanganmi == "admin" or ulanganmi == "administrator":
+    elif ulanganmi == "member" or ulanganmi == "creator" or ulanganmi == "administrator":
 
 
             bot.send_chat_action(message.from_user.id, 'typing')
@@ -106,20 +106,6 @@ def None_id(message):
     bot.send_chat_action(ADMIN_ID, 'typing')
     time.sleep(2)
     bot.send_message(ADMIN_ID, "Siz habar yuborish uchun ID kiritmadingiz.")
-
-
-
-
-
-
-
-
-
-
-
-#rasm pasmlar
-
-#admin
 @bot.message_handler(content_types=['photo'],func=lambda message: message.from_user.id == int(ADMIN_ID) and target_user_id is not None)
 def admin_send_photo(message):
     bot.send_chat_action(target_user_id, 'upload_photo')
@@ -151,7 +137,7 @@ def admin_send_document(message):
 def admin_send_photo(message):
     bot.send_chat_action(ADMIN_ID, 'typing')
     bot.reply_to(message, f"Siz bu hujjatni yuborish uchun ID kiritmadingiz")
-#user
+
 @bot.message_handler(content_types=['photo'],func=lambda message: message.from_user.id != int(ADMIN_ID))
 def user_send_photo(message):
     bot.send_chat_action(ADMIN_ID, 'upload_photo')
@@ -195,4 +181,5 @@ def user_send_document(message):
         types.InlineKeyboardButton(text="F.I.Sh👮", callback_data=f"name_{user_id}"),
     )
     bot.send_message(ADMIN_ID, f"Foydalanuvchidan document", reply_markup=id_button)
+
 bot.polling()
